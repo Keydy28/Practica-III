@@ -17,35 +17,36 @@ namespace Practica_III.Pages
         public int Billete_500 { get; set; } = 19;
         public int Billete_100 { get; set; } = 99;
         public int Monto_Disponible { get; set; }
-
-
+        public string Banco { get; set; }
+        public int MontoRetiro { get; set; }
+          
+        
         public void OnGet()
         {
+
         }
         public void Transacion(string Banco, int MontoRetiro)
         {
-            if (Banco == "ABC" && MontoRetiro > 10000)
-            {
-
-            }
-            else if (Banco != "ABC" && MontoRetiro > 2000)
-            {
-
-            }
-
+            
             int Monto_Res = MontoRetiro;
-            if((Billete_1000 > 0 && (Monto_Res / 1000) > 0))
+
+            if (MontoRetiro > 1000)
             {
-                if (Billete_1000 < (Monto_Res / 1000))
-                {
-                    Monto_Res = Billete_1000 * 1000;
-                    Billete_1000 = 0;
-                } else
-                {
-                    Monto_Res = (Monto_Res / 1000) * 1000;
-                    Billete_1000 = Billete_1000 - (Monto_Res / 1000);
-                }
+                Monto_Res = MontoRetiro / 1000;
+                MontoRetiro = MontoRetiro-(Monto_Res * 1000) ;
             }
+
+            if (MontoRetiro>500 && MontoRetiro < 1000)
+            {
+                Monto_Res = MontoRetiro / 500;
+                MontoRetiro = MontoRetiro- (Monto_Res * 500);
+            }
+            if(MontoRetiro>100&& MontoRetiro < 500)
+            {
+                Monto_Res = MontoRetiro / 100;
+                MontoRetiro = MontoRetiro - (Monto_Res * 100);
+            }
+            
         }
 
     }

@@ -36,7 +36,7 @@ namespace Practica_III.Pages
             
             InteresMensual = CapitalPrestamo * InteresAnual / 100;
 
-            CuotaMensual =(InteresMensual + CapitalPrestamo) /12;
+            CuotaMensual =(InteresMensual + CapitalPrestamo) /CantidadCuotaPrestamo;
             
             AmortizacionPrest = new List<ListaCuotas>();
 
@@ -71,7 +71,8 @@ namespace Practica_III.Pages
         public double CapitalPrestamo { get; set; }
         public double InteresPrestamo { get; set; }
         public double CapitalTotal { get; set; }
-        public double CapitalRest { get; set; }
+        public double CapitalRest { get; set; }       
+
     }
     
 }

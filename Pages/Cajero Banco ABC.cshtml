@@ -1,4 +1,29 @@
 ﻿@page
 @model Practica_III.Pages.Cajero_Banco_ABCModel
 @{
+    string Mensaje = "Solo permite retirar 10,000.00";
+    string MensajeABC = "Solo en Banco ABC pude retirar mas de 2,000.00 ";
+
 }
+
+<h1>Cajero Banco ABC</h1>
+
+<body>
+    <div>
+
+        <content>  </content>  
+
+
+    </div>
+
+
+
+   @if (@Model.Banco == "ABC" && @Model.MontoRetiro > 10000)
+    {
+
+    }
+    else if (@Model.Banco != "ABC" && @Model.MontoRetiro > 2000)
+    {
+
+    }
+</body>

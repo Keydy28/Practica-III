@@ -9,7 +9,9 @@
 
         <h1>Calculadora de Prestamo </h1>
 
-        <form method="post">
+        <form method="post"> 
+                  
+                  
             <label for="nombre"> Capital Prestamo:</label>
             <input type="number" name="Capital" value="" size="10" id="nombre"><br>
 
@@ -18,42 +20,41 @@
 
             <label for="nombre">Interes Anual:</label>
             <input type="number" name="Interes" value="" id="nombre"><br>
-
+                       
             <input type="submit" value="Calcular Cuota" />
 
+            <h2> Cuota Mensula: @string.Format("{0:#,0.00}", @Model.CuotaMensual) </h2>
 
         </form>
 
         <h1>Tabla Amortizacion </h1>
-        <tbody>
-        <table border="1">
-            <thead>
+        
+            <table style="width: 100%" border="1">
             
-            
-                <tr>
-                    <th>Numero de Cuota</th>
-                    <th>Capital</th>
-                    <th>Cuota Mensula</th>
-                    <th>Interes Prestamo</th>
-                </tr>
+                 <tr>
 
-            </thead>
+                   <th>Numero de Cuota</th>
+                   <th>Capital</th>
+                   <th>Cuota Mensula</th>
+                   <th>Interes Prestamo</th>
 
-            
-                @foreach (var item in Model.AmortizacionPrest)
-                {
-                    <tr>
-                        <td>@item.NumeroCuota</td>
-                        <td>@item.CapitalPrestamo</td>
-                        <td>@item.MontoCuota</td>
-                        <td>@item.InteresPrestamo</td>
-                    </tr>
-                }
-                
+                 </tr>
+                      
+                          
+                  @{ foreach (var item in Model.AmortizacionPrest)
+                        {
+                         <tr>
+    
+                            <td>@item.NumeroCuota</td>
+                            <td>@string.Format("{0:#,0.00}", @item.CapitalPrestamo)</td>
+                            <td>@string.Format("{0:#,0.00}",@item.MontoCuota)</td>
+                            <td>@item.InteresPrestamo</td>
+                         </tr>
+                         }
+                     }
 
-                
-            </tbody>
-        </table>
+            </table>
+        
 
     </div>
 
