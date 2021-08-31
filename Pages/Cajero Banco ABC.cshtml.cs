@@ -11,43 +11,68 @@ namespace Practica_III.Pages
     {
         public List<string> Bancos = new List<string>()
         {
-            "ABC", "RESERVAS"
+            "ABC", "RESERVAS", "BHD",
         };
         public int Billete_1000 { get; set; } = 9;
         public int Billete_500 { get; set; } = 19;
         public int Billete_100 { get; set; } = 99;
+        public int Resultado_Calculo_1000 { get; set; }
+        public int Resultado_Calculo_500 { get; set; }
+        public int Resultado_Calculo_100 { get; set; }
         public int Monto_Disponible { get; set; }
         public string Banco { get; set; }
         public int MontoRetiro { get; set; }
           
         
-        public void OnGet()
+        public void OnGet(int Monto)
         {
+            Resultado_Calculo_1000 = Transacion(MontoRetiro: Monto);
+            Resultado_Calculo_500 = Transaccin500(MontoRetiro: Monto);
+            Resultado_Calculo_100 = Transaccion100(MontoRetiro: Monto);
 
+            Billete_1000 = Billete_1000 - Resultado_Calculo_1000;
+            Billete_500 = Billete_500 - Resultado_Calculo_500;
+            Billete_100 = Billete_100 - Resultado_Calculo_100;
         }
-        public void Transacion(string Banco, int MontoRetiro)
+        public int Transacion(int MontoRetiro)
         {
             
-            int Monto_Res = MontoRetiro;
+            int Monto_Res =0; 
 
             if (MontoRetiro > 1000)
             {
                 Monto_Res = MontoRetiro / 1000;
                 MontoRetiro = MontoRetiro-(Monto_Res * 1000) ;
+                return Monto_Res;
             }
+            return 0;    
+            
+        }
+        public int Transaccin500(int MontoRetiro)
 
-            if (MontoRetiro>500 && MontoRetiro < 1000)
+        {
+            int Monto_Res = 0;
+           
+            if (MontoRetiro >= 500 && MontoRetiro < 1000)
             {
                 Monto_Res = MontoRetiro / 500;
-                MontoRetiro = MontoRetiro- (Monto_Res * 500);
+                MontoRetiro = MontoRetiro - (Monto_Res * 500);
+                return Monto_Res;
             }
-            if(MontoRetiro>100&& MontoRetiro < 500)
+            return 0;
+        }
+        public int Transaccion100(int MontoRetiro)
+        {
+            int Monto_Res = 0;
+            if (MontoRetiro >= 100 && MontoRetiro < 500)
             {
                 Monto_Res = MontoRetiro / 100;
                 MontoRetiro = MontoRetiro - (Monto_Res * 100);
+                return Monto_Res;
             }
-            
+            return 0;
         }
 
+        
     }
 }
