@@ -46,10 +46,28 @@ namespace Practica_III.Pages
             {
                 Billete_100 = Monto / 100;
             }
-            
+
+            Mensajeerror = "";
+
+            if (Banco == "ABC" && Monto > 10000)
+            {
+                Mensajeerror = "Solo puede retirar 10000";
+
+            }
+            //return Mensajeerror;
+
+            if (Banco == "BANRESERVAS" || Monto > 2000)
+            {
+
+                Mensajeerror = "Solo pueden retirar 2000";
+
+            }
+           // return Mensajeerror;
+
+
 
         }
-        public string Mensaje( int Monto)
+       /* public string Mensaje( int Monto)
 
         {
 
@@ -69,6 +87,6 @@ namespace Practica_III.Pages
 
             }
             return Mensajeerror;
-        }
+        }*/
     }
 }
